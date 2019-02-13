@@ -7,12 +7,12 @@ class acessoBaseQuery extends PDO{
     }
 
     private function setParam($statment,$key,$value){
-        $statment -> bindParam($key,$values);
+        $statment -> bindParam($key,$value);
     }
 
     private function setParams($statment, $parameters = array()){
         foreach ($parameters as $key => $value) {
-            $this->setParam($key,$values);
+            $this->setParam($statment,$key,$value);
         }
     }
 
