@@ -95,5 +95,25 @@ class Produto {
         ));
     }
 
+    public static function listAllProduto(){
+         $sql = "select p.id,p.descricao,p.fabricante_id,f.descricao fabricante,p.unidade_id,u.descricao unidade,p.embalagem "; 
+        $sql = $sql."from tb_produtos p inner join tb_unidades u on p.unidade_id=u.id inner join tb_fabricantes f on f.id=p.fabricante_id order by p.descricao";
+            
+        $acessoQuery = new acessoBaseQuery();
+        return $acessoQuery->select($sql);
+        
+
+    }
+
+    public static function buscaProduto($descricao){
+         $sql = "select p.id,p.descricao,p.fabricante_id,f.descricao fabricante,p.unidade_id,u.descricao unidade,p.embalagem "; 
+        $sql = $sql."from tb_produtos p inner join tb_unidades u on p.unidade_id=u.id inner join tb_fabricantes f on f.id=p.fabricante_id ";
+        $sql=$sql."where p.descricao like :FILTRO order by p.descricao";   
+
+        $acessoQuery = new acessoBaseQuery();
+        return $acessoQuery->select($sql,array(':FILTRO'=>'%'.$descricao."%"));
+        
+
+    }
 }
 ?>

@@ -8,7 +8,16 @@ $produtos = $acessoQuery->select($sql);
 echo json_encode($produtos);
  */
 $showProduto = new Produto();
-$showProduto->loadById(2);
-echo $showProduto;
+//carrega um usuario
+/* $showProduto->loadById(2);
+echo $showProduto; */
 
+
+//garrega uma lista de usuário
+/* $listaProduto= produto::listAllProduto();
+echo json_encode($listaProduto); */
+
+//carrega uma lista com filtro pelo descrição do produto
+$listaProduto= produto::buscaProduto('arr');
+echo json_encode($listaProduto);
 ?>
